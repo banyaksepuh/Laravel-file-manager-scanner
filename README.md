@@ -21,28 +21,24 @@ Dengan pendekatan validasi yang lebih ketat, tool ini meminimalisir false positi
 
 ## 🔍 Detection Logic
 1. Protocol Handling
-
 Tool akan mencoba akses menggunakan:
 - https://
 - http://
 - Jika target sudah memiliki skema, maka akan digunakan langsung.
 
 2. Path Enumeration
-
 Scanner akan mengecek beberapa path umum LFM:
 - /laravel-filemanager
 - /filemanager
 - /file-manager
 
 3. Auth Detection (Protected LFM)
-
 Jika response:
 - Status: 301 / 302
 Redirect ke halaman login
 Maka dianggap VULN (Auth)
 
 4. Open LFM Detection (Strict Validation)
-
 Jika response:
 - Status: 200
 Maka akan dilakukan validasi konten dengan signature khusus:
@@ -54,7 +50,6 @@ Maka akan dilakukan validasi konten dengan signature khusus:
 Minimal harus ada 2 signature untuk dianggap valid. "OPEN (CONFIRMED)"
 
 5. API-Based Detection
-
 Jika halaman utama tidak valid, tool akan mencoba:
 - /initialize
 Jika ditemukan response valid seperti:
